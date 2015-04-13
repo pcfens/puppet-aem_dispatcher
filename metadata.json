@@ -1,0 +1,34 @@
+{
+  "name": "pcfens-aem_dispatcher",
+  "version": "0.1.0",
+  "author": "pcfens",
+  "license": "Apache-2.0",
+  "summary": "A module to install the AEM dispatcher Apache module",
+  "source": "https://github.com/pcfens/puppet-aem_dispatcher",
+  "project_page": "https://github.com/pcfens/puppet-aem_dispatcher",
+  "issues_url": "https://github.com/pcfens/puppet-aem_dispatcher/issues",
+  "tags": ["aem"],
+  "operatingsystem_support": [
+    {
+      "operatingsystem": "RedHat",
+      "operatingsystemrelease": [
+        "5.0",
+        "6.0",
+        "7.0"
+      ]
+    },
+    {
+      "operatingsystem": "Ubuntu",
+      "operatingsystemrelease": [
+        "12.04",
+        "14.04"
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "name": "puppetlabs/apache",
+      "version_requirement": ">=1.2.0 <2.0.0"
+    }
+  ]
+}
