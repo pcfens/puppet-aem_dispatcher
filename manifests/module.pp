@@ -22,12 +22,12 @@ class aem_dispatcher::module {
         path    => '/usr/bin:/bin:/sbin',
         cwd     => $lib_path,
         command => "curl ${aem_dispatcher::archive_url} | tar xvz --wildcards dispatcher-apache*.so",
-        creates => "${::apache::params::lib_path}/dispatcher-apache${::apache::apache_version}-${::aem_dispatcher::version}.so",
+        creates => "${lib_path}/dispatcher-apache${::apache::apache_version}-${::aem_dispatcher::version}.so",
         require => [Package['curl'], Class['apache'] ],
       }
 
       file { 'dispatcher_module.so':
-        path    => "${::apache::params::lib_path}/dispatcher-apache${::apache::apache_version}-${::aem_dispatcher::version}.so",
+        path    => "${lib_path}/dispatcher-apache${::apache::apache_version}-${::aem_dispatcher::version}.so",
         owner   => 'root',
         group   => 'root',
         mode    => '0644',
