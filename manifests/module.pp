@@ -12,9 +12,15 @@ class aem_dispatcher::module {
         ensure => present,
       }
 
+      if $::osfamily == 'RedHat' or $::operatingsystem == 'amazon' {
+        $lib_path = '/usr/lib64/httpd/modules/'
+      } else {
+        $lib_path = $::apache::params::lib_path
+      }
+
       exec { 'install-dispatcher':
         path    => '/usr/bin:/bin:/sbin',
-        cwd     => $::apache::params::lib_path,
+        cwd     => $lib_path,
         command => "curl ${aem_dispatcher::archive_url} | tar xvz --wildcards dispatcher-apache*.so",
         creates => "${::apache::params::lib_path}/dispatcher-apache${::apache::apache_version}-${::aem_dispatcher::version}.so",
         require => [Package['curl'], Class['apache'] ],
