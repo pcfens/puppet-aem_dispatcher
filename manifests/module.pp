@@ -1,4 +1,4 @@
-class aem_dispatcher::module {
+class aem_dispatcher::module inherits aem_dispatcher {
   case $aem_dispatcher::install_from {
     'package': {
       package { $::aem_dispatcher::package_name:
