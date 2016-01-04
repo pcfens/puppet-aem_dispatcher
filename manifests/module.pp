@@ -8,8 +8,10 @@ class aem_dispatcher::module inherits aem_dispatcher {
       }
     }
     'remote_archive': {
-      package { 'curl':
-        ensure => present,
+      if !defined(Package['curl']){
+        package { 'curl':
+          ensure => present,
+        }
       }
 
       if $::osfamily == 'RedHat' or $::operatingsystem == 'amazon' {
